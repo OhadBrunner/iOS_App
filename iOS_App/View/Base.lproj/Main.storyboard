@@ -46,20 +46,8 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="estee-janssens-396883" translatesAutoresizingMaskIntoConstraints="NO" id="NdY-Ln-fhq">
                                 <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZtW-5X-dMK">
-                                <rect key="frame" x="142" y="390" width="130" height="55"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.53482514619999999" green="0.82401758430000005" blue="0.85039114950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="24"/>
-                                <state key="normal" title="Log In">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <segue destination="fgE-sv-QAN" kind="show" id="RLP-eF-hRU"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IBV-hR-11V">
-                                <rect key="frame" x="142" y="305" width="130" height="55"/>
+                                <rect key="frame" x="142" y="320" width="130" height="55"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.13076913356781006" green="0.74181324243545532" blue="0.51588886976242065" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="24"/>
@@ -69,6 +57,18 @@
                                 </state>
                                 <connections>
                                     <segue destination="HXy-la-wy5" kind="show" identifier="goToRegistration" id="Cwf-MP-dul"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZtW-5X-dMK">
+                                <rect key="frame" x="142" y="407" width="130" height="55"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.53482514619999999" green="0.82401758430000005" blue="0.85039114950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="24"/>
+                                <state key="normal" title="Log In">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <segue destination="fgE-sv-QAN" kind="show" id="RLP-eF-hRU"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -82,6 +82,9 @@
                         <viewLayoutGuide key="safeArea" id="7ki-IB-ESN"/>
                     </view>
                     <navigationItem key="navigationItem" title="Welcome" id="FPB-Vg-tgS"/>
+                    <connections>
+                        <segue destination="01s-iY-7nU" kind="show" identifier="goToMyList" id="rrM-6C-cCD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kLf-SK-sDo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -133,11 +136,41 @@
                     <connections>
                         <outlet property="emailTextField" destination="Kay-GS-I21" id="kmE-Ql-9W8"/>
                         <outlet property="passwordTextField" destination="yss-Sf-fEL" id="Map-6R-d6h"/>
+                        <segue destination="01s-iY-7nU" kind="show" identifier="goToMyList" id="OIu-Mb-rv2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sWj-ZQ-uYj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="813.04347826086962" y="564.94565217391312"/>
+        </scene>
+        <!--My List-->
+        <scene sceneID="wEM-qK-nGl">
+            <objects>
+                <viewController storyboardIdentifier="myListVC" id="01s-iY-7nU" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="n6e-Nw-WqS">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lsG-Dd-CIf">
+                                <rect key="frame" x="0.0" y="687" width="414" height="49"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <items>
+                                    <tabBarItem title="Chat" image="icons8-conference_call-1" id="Syj-ln-FxZ"/>
+                                    <tabBarItem systemItem="more" id="vyf-De-tAh"/>
+                                </items>
+                            </tabBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="xBt-Z3-aNq"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="My List" id="ZdK-gs-PnY">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="fst-Zf-6Ns"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GXn-mr-dZQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1707" y="112"/>
         </scene>
         <!--Register-->
         <scene sceneID="zuO-yY-V2Q">
@@ -185,6 +218,7 @@
                     <connections>
                         <outlet property="emailTextField" destination="ilR-Ol-IOd" id="cO4-hv-Q4U"/>
                         <outlet property="passwordTextField" destination="010-sU-oLY" id="Ucb-JI-T5W"/>
+                        <segue destination="01s-iY-7nU" kind="show" identifier="goToMyList" id="NCQ-R0-Y9E"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qTE-UE-nDg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -194,7 +228,11 @@
     </scenes>
     <resources>
         <image name="estee-janssens-396883" width="2000" height="2992"/>
+        <image name="icons8-conference_call-1" width="32" height="32"/>
         <image name="igor-ovsyannykov-520422" width="4000" height="6000"/>
         <image name="stil-354979" width="3264" height="4928"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="NCQ-R0-Y9E"/>
+    </inferredMetricsTieBreakers>
 </document>

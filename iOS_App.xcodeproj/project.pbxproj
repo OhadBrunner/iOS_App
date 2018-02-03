@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		896247EA1D83F260D5DA24F7 /* Pods_iOS_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61C4F03F9C77FECCBCE94F33 /* Pods_iOS_App.framework */; };
+		F93F86D82025D85500D850AE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F93F86D72025D85500D850AE /* GoogleService-Info.plist */; };
 		F9538896202395CB00BF971C /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9538895202395CB00BF971C /* RegisterViewController.swift */; };
 		F953889820239A4F00BF971C /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F953889720239A4F00BF971C /* LogInViewController.swift */; };
 		F97E0D032023591D00E170A2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97E0D022023591D00E170A2 /* AppDelegate.swift */; };
@@ -16,13 +17,13 @@
 		F97E0D0B2023591D00E170A2 /* iOS_App.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F97E0D092023591D00E170A2 /* iOS_App.xcdatamodeld */; };
 		F97E0D0D2023591D00E170A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F97E0D0C2023591D00E170A2 /* Assets.xcassets */; };
 		F97E0D102023591D00E170A2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F97E0D0E2023591D00E170A2 /* LaunchScreen.storyboard */; };
-		F97E0D1D202366BB00E170A2 /* GoogleService-Info-3.plist in Resources */ = {isa = PBXBuildFile; fileRef = F97E0D1C202366BB00E170A2 /* GoogleService-Info-3.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		61C4F03F9C77FECCBCE94F33 /* Pods_iOS_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B727B476517BB80E6A5F6ED5 /* Pods-iOS_App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS_App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOS_App/Pods-iOS_App.debug.xcconfig"; sourceTree = "<group>"; };
 		C8F7969558BB96F67703F30E /* Pods-iOS_App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS_App.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOS_App/Pods-iOS_App.release.xcconfig"; sourceTree = "<group>"; };
+		F93F86D72025D85500D850AE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F9538895202395CB00BF971C /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		F953889720239A4F00BF971C /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		F97E0CFF2023591D00E170A2 /* iOS_App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOS_App.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -33,7 +34,6 @@
 		F97E0D0C2023591D00E170A2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F97E0D0F2023591D00E170A2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F97E0D112023591D00E170A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F97E0D1C202366BB00E170A2 /* GoogleService-Info-3.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-3.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,7 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				F97E0D112023591D00E170A2 /* Info.plist */,
-				F97E0D1C202366BB00E170A2 /* GoogleService-Info-3.plist */,
+				F93F86D72025D85500D850AE /* GoogleService-Info.plist */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -202,10 +202,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F93F86D82025D85500D850AE /* GoogleService-Info.plist in Resources */,
 				F97E0D102023591D00E170A2 /* LaunchScreen.storyboard in Resources */,
 				F97E0D0D2023591D00E170A2 /* Assets.xcassets in Resources */,
 				F97E0D082023591D00E170A2 /* Main.storyboard in Resources */,
-				F97E0D1D202366BB00E170A2 /* GoogleService-Info-3.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,7 +358,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -409,7 +409,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";

@@ -26,6 +26,8 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
         ListTableView.delegate = self
         
         
+        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
+        
         loadCategories()
     }
     

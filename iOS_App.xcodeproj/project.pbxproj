@@ -14,7 +14,7 @@
 		F97E0D032023591D00E170A2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97E0D022023591D00E170A2 /* AppDelegate.swift */; };
 		F97E0D052023591D00E170A2 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97E0D042023591D00E170A2 /* WelcomeViewController.swift */; };
 		F97E0D082023591D00E170A2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F97E0D062023591D00E170A2 /* Main.storyboard */; };
-		F97E0D0B2023591D00E170A2 /* iOS_App.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F97E0D092023591D00E170A2 /* iOS_App.xcdatamodeld */; };
+		F97E0D0B2023591D00E170A2 /* dataBase.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F97E0D092023591D00E170A2 /* dataBase.xcdatamodeld */; };
 		F97E0D0D2023591D00E170A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F97E0D0C2023591D00E170A2 /* Assets.xcassets */; };
 		F97E0D102023591D00E170A2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F97E0D0E2023591D00E170A2 /* LaunchScreen.storyboard */; };
 		F9FEF3502025E990007556CD /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9FEF34F2025E990007556CD /* CategoryViewController.swift */; };
@@ -142,7 +142,7 @@
 		F97E0D1B2023607F00E170A2 /* Data Model */ = {
 			isa = PBXGroup;
 			children = (
-				F97E0D092023591D00E170A2 /* iOS_App.xcdatamodeld */,
+				F97E0D092023591D00E170A2 /* dataBase.xcdatamodeld */,
 			);
 			path = "Data Model";
 			sourceTree = "<group>";
@@ -296,7 +296,7 @@
 			files = (
 				F9FEF3502025E990007556CD /* CategoryViewController.swift in Sources */,
 				F97E0D052023591D00E170A2 /* WelcomeViewController.swift in Sources */,
-				F97E0D0B2023591D00E170A2 /* iOS_App.xcdatamodeld in Sources */,
+				F97E0D0B2023591D00E170A2 /* dataBase.xcdatamodeld in Sources */,
 				F97E0D032023591D00E170A2 /* AppDelegate.swift in Sources */,
 				F9FEF35920272B07007556CD /* ItemsViewController.swift in Sources */,
 				F953889820239A4F00BF971C /* LogInViewController.swift in Sources */,
@@ -489,13 +489,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		F97E0D092023591D00E170A2 /* iOS_App.xcdatamodeld */ = {
+		F97E0D092023591D00E170A2 /* dataBase.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				F97E0D0A2023591D00E170A2 /* iOS_App.xcdatamodel */,
 			);
 			currentVersion = F97E0D0A2023591D00E170A2 /* iOS_App.xcdatamodel */;
-			path = iOS_App.xcdatamodeld;
+			path = dataBase.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

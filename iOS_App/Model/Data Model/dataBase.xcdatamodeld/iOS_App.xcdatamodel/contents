@@ -9,8 +9,13 @@
         <attribute name="title" attributeType="String" syncable="YES"/>
         <relationship name="parentCategory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="items" inverseEntity="Category" syncable="YES"/>
     </entity>
+    <entity name="Message" representedClassName=".Message" syncable="YES" codeGenerationType="class">
+        <attribute name="messageBody" attributeType="String" syncable="YES"/>
+        <attribute name="sender" attributeType="String" syncable="YES"/>
+    </entity>
     <elements>
-        <element name="Item" positionX="-63" positionY="-18" width="128" height="88"/>
         <element name="Category" positionX="-243" positionY="-18" width="128" height="73"/>
+        <element name="Item" positionX="-63" positionY="-18" width="128" height="88"/>
+        <element name="Message" positionX="-243" positionY="179" width="128" height="73"/>
     </elements>
 </model>

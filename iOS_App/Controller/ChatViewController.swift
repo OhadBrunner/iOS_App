@@ -8,11 +8,16 @@
 
 import UIKit
 import Firebase
+import CoreData
 import ChameleonFramework
 
-class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
+class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     var messagesArray = [Message]()
+    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    let imagePicker = UIImagePickerController()
     
     @IBOutlet weak var MessageTableView: UITableView!
     @IBOutlet weak var MessageTextField: UITextField!
@@ -31,11 +36,12 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         MessageTextField.delegate = self
         
+        imagePicker.delegate = self
+        
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tableViewTapped))
         MessageTableView.addGestureRecognizer(tapGesture) // whenever the table view gets tapped anywhere, it's going to trigger the tap gesture which calls a method called tableViewTapped which calls a method called endEditing on our messageTextField, which in turn calls the method textFieldDidEndEditing and triggers it's animation.
         
-        
-        MessageTableView.register(UINib(nibName: "MyMessageCell", bundle: nil), forCellReuseIdentifier: "MessageCell")
+        MessageTableView.register(UINib(nibName: "MyMessageCell", bundle: nil), forCellReuseIdentifier: "theMessageCell")
         
         configureTableView()
         
@@ -54,7 +60,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MessageCell", for: indexPath) as! MyMessageCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "theMessageCell", for: indexPath) as! MyMessageCell
         
         cell.MessageBody.text = messagesArray[indexPath.row].messageBody
         cell.SenderUserName.text = messagesArray[indexPath.row].sender
@@ -123,9 +129,9 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     //MARK: - Send & Recieve from Firebase
     
-    @IBAction func sendPressed(_ sender: UIButton) {
+    @IBAction func sendPressed(_ sender: AnyObject) {
         
-        MessageTextField.endEditing(true) // once the send buttoin gets pressed we want the keyboard and the text field to collapse
+        MessageTextField.endEditing(true) // once the send button gets pressed we want the keyboard and the text field to go down
         
         MessageTextField.isEnabled = false //text fiels can't take any text until the current message is sent
         SendButton.isEnabled = false //this button is no longer clickable so we don't have duplicates of the same messages
@@ -153,7 +159,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.MessageTextField.text = "" // clear the text field for new message
         }
     }
-    
+ 
     func retieveMessages() {
         
         let messageDB = Database.database().reference().child("Messages") //a reference for our database in Firebase for the messages. we have to spell the name of the child exactly like it should otherwise it won't be able to get to our database
@@ -166,16 +172,57 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             let text = snapshotValue["MessageBody"]!
             let sender = snapshotValue["Sender"]!
             
-            let message = Message()
-            message.messageBody = text
-            message.sender = sender
+            //let message = NSEntityDescription.insertNewObject(forEntityName: "Message", into: self.context) as! Message //saving to sql
             
+            let message = Message(context: self.context)
+            
+            message.messageBody = text // the message body might be a picture!
+            message.sender = sender
+        
             self.messagesArray.append(message)
             
+            self.saveMessage()
+            
             self.configureTableView()
-            self.MessageTableView.reloadData() //show the new message on the table view
+            //self.MessageTableView.reloadData() //show the new message on the table view
         }
     }
+    
+    func saveMessage() {
+        
+        do {
+            try context.save()
+        } catch {
+            print("Error saving message \(error)")
+        }
+        
+        MessageTableView.reloadData()
+    }
+    
+
+    
+    //MARK: - camera & photo library
+    
+    /*
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            
+        } else {
+            print("There was an error picking the image")
+        }
+    }
+    */
+    
+    @IBAction func cameraTapped(_ sender: UIButton) {
+        
+        imagePicker.sourceType = .camera
+        imagePicker.allowsEditing = false // true?
+        
+        present(imagePicker, animated: true, completion: nil)
+        
+    }
+    
     
     
 }

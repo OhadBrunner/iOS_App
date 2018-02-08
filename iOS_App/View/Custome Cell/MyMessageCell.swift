@@ -10,9 +10,13 @@ import UIKit
 
 class MyMessageCell: UITableViewCell {
 
+    
     @IBOutlet weak var MessageBackground: UIView!
+    
     @IBOutlet weak var AvatarImageView: UIImageView!
+    
     @IBOutlet weak var SenderUserName: UILabel!
+    
     @IBOutlet weak var MessageBody: UILabel!
     
     

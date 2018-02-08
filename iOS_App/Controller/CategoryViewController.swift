@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class CategoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class CategoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITabBarDelegate {
     
     
     var categories = [Category]()
@@ -18,13 +18,16 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
     
     
     @IBOutlet weak var ListTableView: UITableView!
-
+    @IBOutlet weak var TabBar: UITabBar!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         ListTableView.dataSource = self
         ListTableView.delegate = self
         
+        TabBar.delegate = self
         
         print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         
@@ -58,11 +61,14 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
+        if segue.identifier == "goToItems" {
+        
         let destinationVC = segue.destination as! ItemsViewController
         
         if let indexPath = ListTableView.indexPathForSelectedRow {
             destinationVC.selectedCategory = categories[indexPath.row]
     
+        }
         }
     }
     
@@ -104,7 +110,7 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
         
         let action = UIAlertAction(title: "Add", style: .default) { (action) in
             
-            let newCategory = Category(context: self.context) //?
+            let newCategory = Category(context: self.context) // אפשר לאתחל כמו שאני מאתחל הודעה? וזה ישר שולח לדאטאבייס? או הפוך
             newCategory.name = textField.text!
             
             self.categories.append(newCategory)
@@ -122,6 +128,17 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
         }
         
         present(alert, animated: true, completion: nil)
+    }
+    
+    
+    //MARK: - TabBar Delegate Methods
+    
+    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        
+        if item.tag == 1 {
+            
+            performSegue(withIdentifier: "goToChat", sender: self)
+        }
     }
 
 }

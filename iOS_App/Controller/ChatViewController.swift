@@ -184,7 +184,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.saveMessage()
             
             self.configureTableView()
-            //self.MessageTableView.reloadData() //show the new message on the table view
+            self.MessageTableView.reloadData() //show the new message on the table view
         }
     }
     
@@ -196,7 +196,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             print("Error saving message \(error)")
         }
         
-        MessageTableView.reloadData()
+        //MessageTableView.reloadData()
     }
     
 

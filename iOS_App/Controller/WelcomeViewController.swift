@@ -86,12 +86,7 @@ class WelcomeViewController: UIViewController, UITextFieldDelegate, UINavigation
                 })
             }
         }
-        /*
-        func pushTomainView() {
-            let vc = self.storyboard?.instantiateViewController(withIdentifier: "Navigation") as! NavVC
-            self.show(vc, sender: nil)
-        }
-        */
+
         func openPhotoPickerWith(source: PhotoSource) {
             switch source {
             case .camera:
@@ -143,7 +138,6 @@ class WelcomeViewController: UIViewController, UITextFieldDelegate, UINavigation
                         item.text = ""
                     }
                     if status == true {
-                        //weakSelf?.pushTomainView()
                         weakSelf?.profilePicView.image = UIImage.init(named: "profile pic")
                         self.performSegue(withIdentifier: "goToMyList", sender: self)
                     } else {
@@ -168,7 +162,6 @@ class WelcomeViewController: UIViewController, UITextFieldDelegate, UINavigation
                         item.text = ""
                     }
                     if status == true {
-                        //weakSelf?.pushTomainView()
                         self.performSegue(withIdentifier: "goToMyList", sender: self)
                     } else {
                         for item in (weakSelf?.waringLabels)! {

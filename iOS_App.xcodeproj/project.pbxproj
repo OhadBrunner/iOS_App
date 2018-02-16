@@ -11,6 +11,9 @@
 		F92B9DF420319A200055BB2A /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92B9DF320319A200055BB2A /* WelcomeViewController.swift */; };
 		F92B9DF620319B790055BB2A /* Helper Files.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92B9DF520319B790055BB2A /* Helper Files.swift */; };
 		F92B9DF82031A0280055BB2A /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92B9DF72031A0280055BB2A /* UserModel.swift */; };
+		F92B9DFC2031DADA0055BB2A /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92B9DFB2031DADA0055BB2A /* MessageModel.swift */; };
+		F92B9DFE2031DB930055BB2A /* FamilyChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92B9DFD2031DB930055BB2A /* FamilyChat.swift */; };
+		F92B9E002031DCF80055BB2A /* ChatsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92B9DFF2031DCF80055BB2A /* ChatsVC.swift */; };
 		F93F86D82025D85500D850AE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F93F86D72025D85500D850AE /* GoogleService-Info.plist */; };
 		F95BC6402028BE3200F94F0F /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95BC63F2028BE3200F94F0F /* ChatViewController.swift */; };
 		F95BC6432028C87700F94F0F /* MyMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95BC6412028C87700F94F0F /* MyMessageCell.swift */; };
@@ -31,6 +34,9 @@
 		F92B9DF320319A200055BB2A /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		F92B9DF520319B790055BB2A /* Helper Files.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Helper Files.swift"; sourceTree = "<group>"; };
 		F92B9DF72031A0280055BB2A /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		F92B9DFB2031DADA0055BB2A /* MessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
+		F92B9DFD2031DB930055BB2A /* FamilyChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyChat.swift; sourceTree = "<group>"; };
+		F92B9DFF2031DCF80055BB2A /* ChatsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsVC.swift; sourceTree = "<group>"; };
 		F93F86D72025D85500D850AE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F95BC63F2028BE3200F94F0F /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		F95BC6412028C87700F94F0F /* MyMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMessageCell.swift; sourceTree = "<group>"; };
@@ -123,6 +129,8 @@
 				F9FEF35820272B07007556CD /* ItemsViewController.swift */,
 				F95BC63F2028BE3200F94F0F /* ChatViewController.swift */,
 				F92B9DF320319A200055BB2A /* WelcomeViewController.swift */,
+				F92B9DFD2031DB930055BB2A /* FamilyChat.swift */,
+				F92B9DFF2031DCF80055BB2A /* ChatsVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -142,6 +150,7 @@
 			children = (
 				F97E0D1B2023607F00E170A2 /* Data Model */,
 				F92B9DF72031A0280055BB2A /* UserModel.swift */,
+				F92B9DFB2031DADA0055BB2A /* MessageModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -304,11 +313,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F92B9E002031DCF80055BB2A /* ChatsVC.swift in Sources */,
 				F95BC6432028C87700F94F0F /* MyMessageCell.swift in Sources */,
+				F92B9DFE2031DB930055BB2A /* FamilyChat.swift in Sources */,
 				F92B9DF420319A200055BB2A /* WelcomeViewController.swift in Sources */,
 				F9FEF3502025E990007556CD /* CategoryViewController.swift in Sources */,
 				F95BC6402028BE3200F94F0F /* ChatViewController.swift in Sources */,
 				F97E0D0B2023591D00E170A2 /* dataBase.xcdatamodeld in Sources */,
+				F92B9DFC2031DADA0055BB2A /* MessageModel.swift in Sources */,
 				F97E0D032023591D00E170A2 /* AppDelegate.swift in Sources */,
 				F9FEF35920272B07007556CD /* ItemsViewController.swift in Sources */,
 				F92B9DF620319B790055BB2A /* Helper Files.swift in Sources */,

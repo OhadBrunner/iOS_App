@@ -42,8 +42,6 @@ class UserModel {
                         let values = ["name": withName, "email": email, "profilePicLink": path!]
                         Database.database().reference().child("users").child((user?.uid)!).child("credentials").updateChildValues(values, withCompletionBlock: { (errr, _) in
                             if errr == nil {
-                                //let userInfo = ["email" : email, "password" : password]
-                                //UserDefaults.standard.set(userInfo, forKey: "userInformation")
                                 completion(true)
                             }
                         })
@@ -60,15 +58,11 @@ class UserModel {
     class func loginUser(withEmail: String, password: String, completion: @escaping (Bool) -> Swift.Void) {
         Auth.auth().signIn(withEmail: withEmail, password: password, completion: { (user, error) in
             if error == nil {
-                //let userInfo = ["email": withEmail, "password": password]
-                //UserDefaults.standard.set(userInfo, forKey: "userInformation")
                 completion(true)
             } else {
                 completion(false)
             }
         })
     }
-    
-    
-    
+
 }

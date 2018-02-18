@@ -8,7 +8,6 @@
 
 import UIKit
 import Photos
-import Firebase
 import CoreLocation
 
 class FamilyChat: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
@@ -48,57 +47,20 @@ class FamilyChat: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     }
     
     
-    func downloadAllMessages() {
-        
-        if let currentUserID = Auth.auth().currentUser?.uid {
-            let messageDB = Database.database().reference().child("Messages")
-            
-            messageDB.observe(.childAdded) {
-                (snapshot) in
-            
-                    
-                    let snapshotValue = snapshot.value as! [String : Any]
-                    
-                    let messageType = snapshotValue["type"] as! String
-                    var type = MessageType.text
-                    switch messageType {
-                    case "photo":
-                        type = .photo
-                    default: break
-                    }
-                    let content = snapshotValue["content"] as! String
-                    let timestamp = snapshotValue["timestamp"] as! Int
-                    let fromID = snapshotValue["fromID"] as! String
-                
-                    
-                    if fromID == currentUserID {
-                        let message = MessageModel.init(type: type, content: content, owner: .receiver, fromID: fromID, timestamp: timestamp)
-                        self.items.append(message)
-                        self.items.sort{ $0.timestamp < $1.timestamp }
-                        DispatchQueue.main.async {
-                            if self.items.isEmpty == false {
-                                self.tableView.reloadData()
-                                self.tableView.scrollToRow(at: IndexPath.init(row: self.items.count - 1, section: 0), at: .bottom, animated: false)
-                            }
-                        }
-                       
-                    } else {
-                        let message = MessageModel.init(type: type, content: content, owner: .sender, fromID: fromID, timestamp: timestamp)
-                        self.items.append(message)
-                        self.items.sort{ $0.timestamp < $1.timestamp }
-                        DispatchQueue.main.async {
-                            if self.items.isEmpty == false {
-                                self.tableView.reloadData()
-                                self.tableView.scrollToRow(at: IndexPath.init(row: self.items.count - 1, section: 0), at: .bottom, animated: false)
-                            }
-                        }
-                        
-                    }
-            }
-        }
-        
-    }
     
+    //Downloads messages
+    func fetchData() {
+        MessageModel.downloadAllMessages(completion: {[weak weakSelf = self] (message) in
+            weakSelf?.items.append(message)
+            weakSelf?.items.sort{ $0.timestamp < $1.timestamp }
+            DispatchQueue.main.async {
+                if self.items.isEmpty == false {
+                    self.tableView.reloadData()
+                    self.tableView.scrollToRow(at: IndexPath.init(row: self.items.count - 1, section: 0), at: .bottom, animated: false)
+                }
+            }
+        })
+    }
 
     
     func animateExtraButtons(toHide: Bool)  {
@@ -236,19 +198,13 @@ class FamilyChat: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             cell.clearCellData()
             
             let userID = self.items[indexPath.row].fromID
-   
-            let storageRef = Storage.storage().reference().child("usersProfilePics").child(userID)
-            storageRef.getData(maxSize: 10000000) {
-                (data, error) in
-            if (error == nil && data != nil){
+            
+            UserModel.getUserProfilePic(forID: userID) {
+                (image) in
                 
-                let image = UIImage(data: data!)
                 cell.profilePic.image = image
             }
-            }
-            
-            
-            
+
             //cell.profilePic.image = userImage
             switch self.items[indexPath.row].type {
             case .text:
@@ -304,9 +260,9 @@ class FamilyChat: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        currentUserID = Auth.auth().currentUser?.uid as String!
+        currentUserID = UserModel.getCurrentUserID()
         self.customization()
-        self.downloadAllMessages()
+        self.fetchData()
     }
 }
 

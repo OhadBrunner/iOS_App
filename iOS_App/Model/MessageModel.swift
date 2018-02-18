@@ -22,8 +22,44 @@ class MessageModel {
     var fromID: String
    
     
+
     
-    //MARK: Methods
+    //need to move this to the model section
+    class func downloadAllMessages( completion: @escaping (MessageModel) -> Swift.Void) {
+        
+        if let currentUserID = Auth.auth().currentUser?.uid {
+            let messageDB = Database.database().reference().child("Messages")
+            
+            messageDB.observe(.childAdded) {
+                (snapshot) in
+                
+                
+                let snapshotValue = snapshot.value as! [String : Any]
+                
+                let messageType = snapshotValue["type"] as! String
+                var type = MessageType.text
+                switch messageType {
+                case "photo":
+                    type = .photo
+                default: break
+                }
+                let content = snapshotValue["content"] as! String
+                let timestamp = snapshotValue["timestamp"] as! Int
+                let fromID = snapshotValue["fromID"] as! String
+                
+                
+                if fromID == currentUserID {
+                    let message = MessageModel.init(type: type, content: content, owner: .receiver, fromID: fromID, timestamp: timestamp)
+                    completion(message)
+                }
+                
+                else {
+                    let message = MessageModel.init(type: type, content: content, owner: .sender, fromID: fromID, timestamp: timestamp)
+                    completion(message)
+                }
+            }
+        }
+    }
 
     
     func downloadImage(indexpathRow: Int, completion: @escaping (Bool, Int) -> Swift.Void)  {

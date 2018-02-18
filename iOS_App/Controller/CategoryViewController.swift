@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class CategoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITabBarDelegate {
+class CategoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     
     var categories = [Category]()
@@ -18,7 +18,6 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
     
     
     @IBOutlet weak var ListTableView: UITableView!
-    @IBOutlet weak var TabBar: UITabBar!
     
     
     override func viewDidLoad() {
@@ -26,9 +25,7 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
 
         ListTableView.dataSource = self
         ListTableView.delegate = self
-        
-        TabBar.delegate = self
-        
+
         print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         
         loadCategories()
@@ -131,15 +128,11 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     
-    //MARK: - TabBar Delegate Methods
-    
-    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+    @IBAction func FamilyTalkPressed(_ sender: UIBarButtonItem) {
         
-        if item.tag == 1 {
-            
-            performSegue(withIdentifier: "goToChat", sender: self)
-        }
+        performSegue(withIdentifier: "goToChat", sender: self)
     }
+    
 
 }
 

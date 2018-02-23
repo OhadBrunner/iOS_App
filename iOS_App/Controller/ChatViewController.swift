@@ -1,11 +1,11 @@
+////
+////  ChatViewController.swift
+////  iOS_App
+////
+////  Created by Ohad Brunner on 05/02/2018.
+////  Copyright © 2018 Ohad Brunner. All rights reserved.
+////
 //
-//  ChatViewController.swift
-//  iOS_App
-//
-//  Created by Ohad Brunner on 05/02/2018.
-//  Copyright © 2018 Ohad Brunner. All rights reserved.
-//
-
 import UIKit
 import Firebase
 import CoreData
@@ -62,8 +62,8 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "theMessageCell", for: indexPath) as! MyMessageCell
         
-        cell.MessageBody.text = messagesArray[indexPath.row].messageBody
-        cell.SenderUserName.text = messagesArray[indexPath.row].sender
+//        cell.MessageBody.text = messagesArray[indexPath.row].messageBody
+//        cell.SenderUserName.text = messagesArray[indexPath.row].sender
         cell.AvatarImageView.image = UIImage(named : "user")
         
         
@@ -113,7 +113,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.view.layoutIfNeeded() // if something in the view has changed, redraw the all thing
         }
     }
-        
+    
         func textFieldDidEndEditing(_ textField: UITextField) { // this method gets called when the messeageTextFiels's method endEditing getting true
             
             UIView.animate(withDuration: 0.2) {
@@ -172,9 +172,10 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             let text = snapshotValue["MessageBody"]!
             let sender = snapshotValue["Sender"]!
             
-            //let message = NSEntityDescription.insertNewObject(forEntityName: "Message", into: self.context) as! Message //saving to sql
+//            let message = NSEntityDescription.insertNewObject(forEntityName: "Message", into: self.context) as! Message //saving to sql
             
             let message = Message(context: self.context)
+       
             
             message.messageBody = text // the message body might be a picture!
             message.sender = sender
@@ -205,9 +206,9 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     /*
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        
+     
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            
+     
         } else {
             print("There was an error picking the image")
         }
@@ -226,3 +227,4 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
 }
+

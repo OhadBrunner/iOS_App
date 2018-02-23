@@ -8,7 +8,6 @@
 
 import UIKit
 import Photos
-import CoreLocation
 
 class FamilyChat: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
@@ -34,7 +33,7 @@ class FamilyChat: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     var currentUser: UserModel?
     var currentUserID : String = ""
 
-    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     //MARK: Methods
     func customization() {
@@ -118,8 +117,10 @@ class FamilyChat: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     
     func composeMessage(type: MessageType, content: Any)  {
         let message = MessageModel.init(type: type, content: content, owner: .sender, fromID: self.currentUserID, timestamp: Int(Date().timeIntervalSince1970))
-        MessageModel.send(message: message, completion: {(_) in
-        })
+        //the app supposed to know only the Model class!
+        //MessageModel.saveMessageToFirebase(message: message, completion: {(_) in
+        //})
+        Model.instance.addMessage(msg: message)
     }
     
     
@@ -183,7 +184,7 @@ class FamilyChat: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                     cell.message.isHidden = true
                 } else {
                     cell.messageBackground.image = UIImage.init(named: "loading")
-                    self.items[indexPath.row].downloadImage(indexpathRow: indexPath.row, completion: { (state, index) in
+                    self.items[indexPath.row].downloadImage(indexpathRow: indexPath.row, completion: { (state,index) in
                         if state == true {
                             DispatchQueue.main.async {
                                 self.tableView.reloadData()
@@ -205,7 +206,6 @@ class FamilyChat: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                 cell.profilePic.image = image
             }
 
-            //cell.profilePic.image = userImage
             switch self.items[indexPath.row].type {
             case .text:
                 cell.message.text = self.items[indexPath.row].content as! String
@@ -215,7 +215,7 @@ class FamilyChat: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                     cell.message.isHidden = true
                 } else {
                     cell.messageBackground.image = UIImage.init(named: "loading")
-                    self.items[indexPath.row].downloadImage(indexpathRow: indexPath.row, completion: { (state, index) in
+                    self.items[indexPath.row].downloadImage(indexpathRow: indexPath.row, completion: { (state,index) in
                         if state == true {
                             DispatchQueue.main.async {
                                 self.tableView.reloadData()

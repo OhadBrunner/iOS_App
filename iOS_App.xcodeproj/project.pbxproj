@@ -8,12 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		896247EA1D83F260D5DA24F7 /* Pods_iOS_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61C4F03F9C77FECCBCE94F33 /* Pods_iOS_App.framework */; };
-		F920DE672037260200CC810D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F920DE662037260200CC810D /* User.swift */; };
-		F920DE692037260E00CC810D /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = F920DE682037260E00CC810D /* Message.swift */; };
+		F920DE692037260E00CC810D /* MessageFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F920DE682037260E00CC810D /* MessageFirebase.swift */; };
 		F920DE6B2039975900CC810D /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F920DE6A2039975900CC810D /* libsqlite3.0.tbd */; };
 		F920DE6E2039981700CC810D /* test.m in Sources */ = {isa = PBXBuildFile; fileRef = F920DE6D2039981700CC810D /* test.m */; };
 		F920DE702039A63800CC810D /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F920DE6F2039A63800CC810D /* Model.swift */; };
 		F920DE722039AE7F00CC810D /* ModelFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F920DE712039AE7F00CC810D /* ModelFirebase.swift */; };
+		F920DE74203AEADA00CC810D /* MessageSQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = F920DE73203AEADA00CC810D /* MessageSQL.swift */; };
+		F920DE76203AEF2100CC810D /* ModelSQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = F920DE75203AEF2100CC810D /* ModelSQL.swift */; };
+		F920DE78203D9EA900CC810D /* LastUpdateTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F920DE77203D9EA800CC810D /* LastUpdateTable.swift */; };
 		F92B9DF420319A200055BB2A /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92B9DF320319A200055BB2A /* WelcomeViewController.swift */; };
 		F92B9DF620319B790055BB2A /* Helper Files.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92B9DF520319B790055BB2A /* Helper Files.swift */; };
 		F92B9DF82031A0280055BB2A /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92B9DF72031A0280055BB2A /* UserModel.swift */; };
@@ -29,6 +31,8 @@
 		F97E0D0B2023591D00E170A2 /* dataBase.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F97E0D092023591D00E170A2 /* dataBase.xcdatamodeld */; };
 		F97E0D0D2023591D00E170A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F97E0D0C2023591D00E170A2 /* Assets.xcassets */; };
 		F97E0D102023591D00E170A2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F97E0D0E2023591D00E170A2 /* LaunchScreen.storyboard */; };
+		F9EAA536203F42C3008BEFD0 /* UserFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9EAA535203F42C3008BEFD0 /* UserFirebase.swift */; };
+		F9EAA538203F467A008BEFD0 /* UserSQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9EAA537203F467A008BEFD0 /* UserSQL.swift */; };
 		F9FEF3502025E990007556CD /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9FEF34F2025E990007556CD /* CategoryViewController.swift */; };
 		F9FEF35920272B07007556CD /* ItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9FEF35820272B07007556CD /* ItemsViewController.swift */; };
 /* End PBXBuildFile section */
@@ -37,13 +41,15 @@
 		61C4F03F9C77FECCBCE94F33 /* Pods_iOS_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B727B476517BB80E6A5F6ED5 /* Pods-iOS_App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS_App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOS_App/Pods-iOS_App.debug.xcconfig"; sourceTree = "<group>"; };
 		C8F7969558BB96F67703F30E /* Pods-iOS_App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS_App.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOS_App/Pods-iOS_App.release.xcconfig"; sourceTree = "<group>"; };
-		F920DE662037260200CC810D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		F920DE682037260E00CC810D /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		F920DE682037260E00CC810D /* MessageFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageFirebase.swift; sourceTree = "<group>"; };
 		F920DE6A2039975900CC810D /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		F920DE6C2039981700CC810D /* iOS_App-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iOS_App-Bridging-Header.h"; sourceTree = "<group>"; };
 		F920DE6D2039981700CC810D /* test.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = test.m; sourceTree = "<group>"; };
 		F920DE6F2039A63800CC810D /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		F920DE712039AE7F00CC810D /* ModelFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelFirebase.swift; sourceTree = "<group>"; };
+		F920DE73203AEADA00CC810D /* MessageSQL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageSQL.swift; sourceTree = "<group>"; };
+		F920DE75203AEF2100CC810D /* ModelSQL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelSQL.swift; sourceTree = "<group>"; };
+		F920DE77203D9EA800CC810D /* LastUpdateTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastUpdateTable.swift; sourceTree = "<group>"; };
 		F92B9DF320319A200055BB2A /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		F92B9DF520319B790055BB2A /* Helper Files.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Helper Files.swift"; sourceTree = "<group>"; };
 		F92B9DF72031A0280055BB2A /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
@@ -61,6 +67,8 @@
 		F97E0D0C2023591D00E170A2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F97E0D0F2023591D00E170A2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F97E0D112023591D00E170A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F9EAA535203F42C3008BEFD0 /* UserFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFirebase.swift; sourceTree = "<group>"; };
+		F9EAA537203F467A008BEFD0 /* UserSQL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSQL.swift; sourceTree = "<group>"; };
 		F9FEF34F2025E990007556CD /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		F9FEF35820272B07007556CD /* ItemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -170,8 +178,12 @@
 				F920DE712039AE7F00CC810D /* ModelFirebase.swift */,
 				F92B9DF72031A0280055BB2A /* UserModel.swift */,
 				F92B9DFB2031DADA0055BB2A /* MessageModel.swift */,
-				F920DE662037260200CC810D /* User.swift */,
-				F920DE682037260E00CC810D /* Message.swift */,
+				F920DE682037260E00CC810D /* MessageFirebase.swift */,
+				F920DE73203AEADA00CC810D /* MessageSQL.swift */,
+				F920DE75203AEF2100CC810D /* ModelSQL.swift */,
+				F920DE77203D9EA800CC810D /* LastUpdateTable.swift */,
+				F9EAA535203F42C3008BEFD0 /* UserFirebase.swift */,
+				F9EAA537203F467A008BEFD0 /* UserSQL.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -335,23 +347,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F920DE672037260200CC810D /* User.swift in Sources */,
 				F92B9E002031DCF80055BB2A /* ChatsVC.swift in Sources */,
 				F95BC6432028C87700F94F0F /* MyMessageCell.swift in Sources */,
 				F92B9DFE2031DB930055BB2A /* FamilyChat.swift in Sources */,
+				F920DE74203AEADA00CC810D /* MessageSQL.swift in Sources */,
 				F92B9DF420319A200055BB2A /* WelcomeViewController.swift in Sources */,
+				F9EAA538203F467A008BEFD0 /* UserSQL.swift in Sources */,
 				F920DE6E2039981700CC810D /* test.m in Sources */,
 				F9FEF3502025E990007556CD /* CategoryViewController.swift in Sources */,
+				F9EAA536203F42C3008BEFD0 /* UserFirebase.swift in Sources */,
 				F920DE702039A63800CC810D /* Model.swift in Sources */,
 				F95BC6402028BE3200F94F0F /* ChatViewController.swift in Sources */,
 				F97E0D0B2023591D00E170A2 /* dataBase.xcdatamodeld in Sources */,
 				F920DE722039AE7F00CC810D /* ModelFirebase.swift in Sources */,
+				F920DE76203AEF2100CC810D /* ModelSQL.swift in Sources */,
 				F92B9DFC2031DADA0055BB2A /* MessageModel.swift in Sources */,
 				F97E0D032023591D00E170A2 /* AppDelegate.swift in Sources */,
 				F9FEF35920272B07007556CD /* ItemsViewController.swift in Sources */,
 				F92B9DF620319B790055BB2A /* Helper Files.swift in Sources */,
 				F92B9DF82031A0280055BB2A /* UserModel.swift in Sources */,
-				F920DE692037260E00CC810D /* Message.swift in Sources */,
+				F920DE692037260E00CC810D /* MessageFirebase.swift in Sources */,
+				F920DE78203D9EA900CC810D /* LastUpdateTable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -48,19 +48,32 @@ extension MessageModel {
         }
     }
     
-    
-    func downloadImage(indexpathRow: Int, completion: @escaping (Bool, Int) -> Swift.Void)  {
-        if self.type == .photo {
-            let imageLink = self.content as! String
+    class func downloadImage(message: MessageModel, completion: @escaping (Bool) -> Swift.Void)  {
+        if message.type == .photo {
+            let imageLink = message.content as! String
             let imageURL = URL.init(string: imageLink)
             URLSession.shared.dataTask(with: imageURL!, completionHandler: { (data, response, error) in
                 if error == nil {
-                    self.image = UIImage.init(data: data!)
-                    completion(true, indexpathRow)
+                    message.image = UIImage.init(data: data!)
+                    completion(true)
                 }
             }).resume()
         }
     }
+    
+    
+//    func downloadImage(indexpathRow: Int, completion: @escaping (Bool, Int) -> Swift.Void)  {
+//        if self.type == .photo {
+//            let imageLink = self.content as! String
+//            let imageURL = URL.init(string: imageLink)
+//            URLSession.shared.dataTask(with: imageURL!, completionHandler: { (data, response, error) in
+//                if error == nil {
+//                    self.image = UIImage.init(data: data!)
+//                    completion(true, indexpathRow)
+//                }
+//            }).resume()
+//        }
+//    }
     
     
     class func saveMessageImageToFirebase(imageData: Data, child: String, completion: @escaping (String?) -> Void) {

@@ -180,32 +180,33 @@ class Model {
     }
     
     
-    
-/*
-    func getImage(urlStr:String, callback:@escaping (UIImage?)->Void){
+    func getImage(message: MessageModel, callback:@escaping (Bool)-> Void){
         //1. try to get the image from local store
-        let url = URL(string: urlStr)
-        let localImageName = url!.lastPathComponent
+        let localImageName = "\(message.timestamp)"
         if let image = self.getImageFromFile(name: localImageName){
-            callback(image)
+            message.image = image
+            //print("from local")
+            callback(true)
         }else{
             //2. get the image from Firebase
-            modelFirebase?.getImageFromFirebase(url: urlStr, callback: { (image) in
-                if (image != nil){
+            //print("from firebase")
+            MessageModel.downloadImage(message: message) {
+                (state) in
+                if state == true {
                     //3. save the image localy
-                    self.saveImageToFile(image: image!, name: localImageName)
+                    let image = message.image
+                    let time = "\(message.timestamp)"
+                    self.saveImageToFile(image: image!, name: time)
                 }
-                //4. return the image to the user
-                callback(image)
-            })
+                callback(true)
+            }
         }
     }
-*/
 
     private func saveImageToFile(image: UIImage, name:String){
         if let data = UIImageJPEGRepresentation(image, 0.8) {
             let filename = getDocumentsDirectory().appendingPathComponent(name)
-            print(filename)
+            //print(filename)
             try? data.write(to: filename)
         }
     }

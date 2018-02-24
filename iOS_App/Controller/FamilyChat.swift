@@ -184,13 +184,15 @@ class FamilyChat: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                     cell.message.isHidden = true
                 } else {
                     cell.messageBackground.image = UIImage.init(named: "loading")
-                    self.items[indexPath.row].downloadImage(indexpathRow: indexPath.row, completion: { (state,index) in
+                    let msg = self.items[indexPath.row]
+                    Model.instance.getImage(message: msg) {
+                        (state) in
                         if state == true {
                             DispatchQueue.main.async {
                                 self.tableView.reloadData()
                             }
                         }
-                    })
+                    }
                 }
             }
             return cell
@@ -215,13 +217,15 @@ class FamilyChat: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                     cell.message.isHidden = true
                 } else {
                     cell.messageBackground.image = UIImage.init(named: "loading")
-                    self.items[indexPath.row].downloadImage(indexpathRow: indexPath.row, completion: { (state,index) in
+                    let msg = self.items[indexPath.row]
+                    Model.instance.getImage(message: msg) {
+                        (state) in
                         if state == true {
                             DispatchQueue.main.async {
                                 self.tableView.reloadData()
                             }
                         }
-                    })
+                    }
                 }
                 
             }

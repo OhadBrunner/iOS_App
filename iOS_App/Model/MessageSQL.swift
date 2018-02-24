@@ -11,7 +11,7 @@ import Foundation
 import UIKit
 import SQLite3
 
-extension MessageModel{
+extension MessageModel {
 
 
         static let MSG_TABLE = "MESSAGES"

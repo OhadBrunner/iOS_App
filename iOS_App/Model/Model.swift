@@ -8,6 +8,7 @@
 //
 import Foundation
 import UIKit
+import Firebase
 import SQLite3
 
 extension Date {
@@ -45,17 +46,51 @@ class Model {
     lazy private var modelSQL:ModelSQL? = ModelSQL()
     lazy private var modelFirebase:ModelFirebase? = ModelFirebase()
 
+    
+    
     private init(){
     }
 
+    
+    
     func addMessage(msg: MessageModel){
-        MessageModel.saveMessageToFirebase(message: msg, completion: {(_) in
-        })
-        msg.addMessageToLocalDb(database: self.modelSQL?.database)
+        
+        if let currentUserID = Auth.auth().currentUser?.uid {
+            
+        switch msg.type {
+            
+        case .photo:
+            let imageData = msg.content as! UIImage
+            let time = "\(msg.timestamp)"
+            
+            saveImage(imageData: imageData, timeStamp: time) {
+                (path) in
+                let values = ["type": "photo", "content": path!, "fromID": currentUserID, "timestamp": msg.timestamp] as [String : Any]
+                
+                MessageModel.saveMessageToFirebase(values: values, completion: {(_) in
+                })
+            }
+        
+        case .text:
+            
+            let values = ["type": "text", "content": msg.content, "fromID": currentUserID, "timestamp": msg.timestamp] as [String : Any]
+            
+            MessageModel.saveMessageToFirebase(values: values, completion: {(_) in
+            })
+            
+            }
         }
+        //save locally
+         msg.addMessageToLocalDb(database: self.modelSQL?.database)
+    }
+    
+    ///////////////////////////////////////////////////////////////
 
+    
+    
+    
     /*
-
+    
     func getStudentById(id:String, callback:@escaping (Student)->Void){
     }
 
@@ -126,19 +161,27 @@ class Model {
         })
     }
 */
-    /*
-    func saveImage(image:UIImage, name:String, callback:@escaping (String?)->Void){
+    
+    
+    
+    func saveImage(imageData: UIImage, timeStamp: String, callback:@escaping (String?)->Void){
         //1. save image to Firebase
-        modelFirebase?.saveImageToFirebase(image: image, name: name, callback: {(url) in
-            if (url != nil){
+        let image = UIImageJPEGRepresentation((imageData), 0.5)
+        let child = UUID().uuidString
+        MessageModel.saveMessageImageToFirebase(imageData: image!, child: child) {
+            (path) in
+            if path != nil {
                 //2. save image localy
-                self.saveImageToFile(image: image, name: name)
+                self.saveImageToFile(image: imageData, name: timeStamp)
             }
             //3. notify the user on complete
-            callback(url)
-        })
+            callback(path)
+        }
     }
-
+    
+    
+    
+/*
     func getImage(urlStr:String, callback:@escaping (UIImage?)->Void){
         //1. try to get the image from local store
         let url = URL(string: urlStr)
@@ -157,11 +200,12 @@ class Model {
             })
         }
     }
+*/
 
-
-    private func saveImageToFile(image:UIImage, name:String){
+    private func saveImageToFile(image: UIImage, name:String){
         if let data = UIImageJPEGRepresentation(image, 0.8) {
             let filename = getDocumentsDirectory().appendingPathComponent(name)
+            print(filename)
             try? data.write(to: filename)
         }
     }
@@ -176,6 +220,7 @@ class Model {
         let filename = getDocumentsDirectory().appendingPathComponent(name)
         return UIImage(contentsOfFile:filename.path)
     }
-    */
+    
 }
+
 

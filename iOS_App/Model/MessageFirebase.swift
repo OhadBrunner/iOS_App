@@ -65,7 +65,7 @@ extension MessageModel {
     
     class func saveMessageImageToFirebase(imageData: Data, child: String, completion: @escaping (String?) -> Void) {
         
-        Storage.storage().reference().child(child).putData(imageData, metadata: nil) {
+        Storage.storage().reference().child("messagePics").child(child).putData(imageData, metadata: nil) {
             (metadata, error) in
             if error == nil {
                 let path = metadata?.downloadURL()?.absoluteString
@@ -74,46 +74,18 @@ extension MessageModel {
         }
     }
     
-    class func saveMessageToFirebase(message: MessageModel, completion: @escaping (Bool) -> Swift.Void)  {
+    class func saveMessageToFirebase(values: [String:Any], completion: @escaping (Bool) -> Swift.Void)  {
         
-        if let currentUserID = Auth.auth().currentUser?.uid {
-            switch message.type {
-                
-            case .photo:
-                
-                let imageData = UIImageJPEGRepresentation((message.content as! UIImage), 0.5)
-                let child = UUID().uuidString
-                
-                saveMessageImageToFirebase(imageData: imageData!, child: child) {
-                    (path) in
-                    let values = ["type": "photo", "content": path!, "fromID": currentUserID, "timestamp": message.timestamp] as [String : Any]
-                    
-                    Database.database().reference().child("Messages").childByAutoId().setValue(values) {
-                        (error, reference) in
-                        
-                        if error != nil {
-                            print(error!)
-                        } else {
-                            print("Message saved successfuly!")
-                        }
-                    }
-                }
-            case .text:
-                let values = ["type": "text", "content": message.content, "fromID": currentUserID, "timestamp": message.timestamp]
-                
-                Database.database().reference().child("Messages").childByAutoId().setValue(values) {
-                    (error, reference) in
-                    
-                    if error != nil {
-                        print(error!)
-                        
-                    } else {
-                        print("Message saved successfuly!")
-                    }
-                }
+        Database.database().reference().child("Messages").childByAutoId().setValue(values) {
+            (error, reference) in
+            
+            if error != nil {
+                print(error!)
+            } else {
+                print("Message saved successfuly!")
             }
         }
         
     }
-    
+
 }
